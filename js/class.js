@@ -1,4 +1,4 @@
-class Personnage {
+export class Personnage {
     constructor(nom, lieu, argent, mainDroite, mainGauche) {
         this.nom = nom;
         this.lieu = lieu;
@@ -8,55 +8,43 @@ class Personnage {
     }
     seDeplacer(lieu) {
         console.log(this.nom + " est actuellement à la " + lieu.nom)
-        this.nom = lieu.nom
+        this.lieu = lieu.nom
     }
-    payerArticle(article) {
-
+    payerArticle(articles) {
+        let total = 0
+        articles.forEach(a => {
+            this.argent = this.argent - a.prix
+            console.log("prix de l'article " + a.nom + ": " + a.prix + "e \nIl vous reste " + this.argent + "e")
+        });
     }
     couper(ingredient, outil) {
 
     }
 }
 
-
-
-class Lieu {
+export class Lieu {
     constructor(nom, personnes) {
         this.nom = nom;
         this.personnes = personnes;
     }
 }
-let maison = new Lieu("maison", [])
 
-
-
-class Outil {
+export class Outil {
     constructor(nom, action) {
         this.nom = nom;
         this.action = action;
     }
 }
-let couteau = new Outil("couteau", "coupé")
-let mouleur = new Outil("mouleur", "moulu")
 
-
-
-class Produit {
+export class Produit {
     constructor(nom, etats, prix) {
         this.nom = nom;
         this.etats = etats;
         this.prix = prix;
     }
 }
-let oeuf = new Produit("oeuf", "entier", 1.99)
-let fromage = new Produit("fromage", "entier", 0.89)
-let oignon = new Produit("oignon", "entier", 0.45)
-let poivre = new Produit("poivre", "entier", 0.20)
-let sel = new Produit("sel", "entier", 0.15)
 
-
-
-class Epicerie extends Lieu {
+export class Epicerie extends Lieu {
     constructor(nom, personnes, panier, ingredients) {
         super(nom, personnes);
         this.panier = panier;
@@ -64,9 +52,7 @@ class Epicerie extends Lieu {
     }
 }
 
-
-
-class Poele extends Outil {
+export class Poele extends Outil {
     constructor(nom,action, contenu) {
         super(nom, action)
         this.contenu = contenu
@@ -77,26 +63,3 @@ class Poele extends Outil {
     }
 }
 
-
-
-let bol = {
-    contenu: [],
-    melanger(nomMelange) {
-        this.contenu.splice(0)
-        return new Produit(nomMelange, "pas cuit", 0)
-    }
-}
-
-
-
-
-
-
-// debut omelette
-
-
-
-
-personnage.seDeplacer(Epicerie)
-
-personnage.mainDroite.push(Epicerie.)
