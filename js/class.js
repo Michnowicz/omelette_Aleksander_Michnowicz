@@ -18,7 +18,7 @@ export class Personnage {
         });
     }
     couper(ingredient, outil) {
-
+        
     }
 }
 

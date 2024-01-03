@@ -56,3 +56,29 @@ epicerie.ingredients.forEach(e => {
 });
 //payage de chaque article
 personnage.payerArticle(personnage.mainDroite[0])
+
+
+
+//retour a la maison
+personnage.seDeplacer(maison)
+
+//deplacement de chaque ingredient dans le bol
+for (let i = 0; i = personnage.mainDroite[0].length; i++) {
+    bol.contenu.push(personnage.mainDroite[0][0])
+    console.log(personnage.nom + " a mis " + personnage.mainDroite[0][0].nom + " dans le bol.")
+    //suppression de chaque ingredient dans le panier
+    personnage.mainDroite[0].shift()
+}
+
+
+//retour a l'epicerie
+personnage.seDeplacer(epicerie)
+
+// enleve le panier de la main droite
+personnage.mainDroite.shift()
+console.log(personnage.nom + " remet le panier dans le magasin.")
+
+
+
+//retour a la maison
+personnage.seDeplacer(maison)
