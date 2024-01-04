@@ -60,13 +60,14 @@ export class Epicerie extends Lieu {
 }
 
 export class Poele extends Outil {
-    constructor(nom,action, contenu) {
-        super(nom, action)
+    constructor(nom, contenu) {
+        super(nom)
         this.contenu = contenu
     }
     cuire() {
         setTimeout(() => {}, 4000)
-        this.contenu.etats = "cuit"
+        this.contenu.etat = "cuit"
+        console.log(`L'${this.contenu[0].nom} est cuite :)`);
     }
 }
 
