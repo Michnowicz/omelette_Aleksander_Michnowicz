@@ -18,7 +18,14 @@ export class Personnage {
         });
     }
     couper(ingredient, outil) {
-        
+        if (outil.nom == "couteau") {
+            if (ingredient.etat == "entier" && ingredient.nom != "oeuf") {
+                console.log(this.nom + " découpe le/l' " + ingredient.nom);
+                ingredient.etat = "découpé"
+            }
+        } else {
+            console.log("il vous faut un couteau pour découper.");
+        }
     }
 }
 
@@ -37,9 +44,9 @@ export class Outil {
 }
 
 export class Produit {
-    constructor(nom, etats, prix) {
+    constructor(nom, etat, prix) {
         this.nom = nom;
-        this.etats = etats;
+        this.etat = etat;
         this.prix = prix;
     }
 }

@@ -17,8 +17,8 @@ let mouleur = new Outil("mouleur", "moulu")
 let oeuf = new Produit("oeuf", "entier", 1.99)
 let fromage = new Produit("fromage", "entier", 0.89)
 let oignon = new Produit("oignon", "entier", 0.45)
-let poivre = new Produit("poivre", "entier", 0.20)
-let sel = new Produit("sel", "entier", 0.15)
+let poivre = new Produit("poivre", "moulu", 0.20)
+let sel = new Produit("sel", "moulu", 0.15)
 
 //creation de l'objet panier
 let panier = []
@@ -82,3 +82,9 @@ console.log(personnage.nom + " remet le panier dans le magasin.")
 
 //retour a la maison
 personnage.seDeplacer(maison)
+
+//couper les ingrédients
+bol.contenu.forEach(e => {
+    personnage.couper(e, couteau)
+});
+
