@@ -13,8 +13,8 @@ export class Personnage {
     payerArticle(articles) {
         let total = 0
         articles.forEach(a => {
-            this.argent = this.argent - a.prix
-            console.log("prix de l'article " + a.nom + ": " + a.prix + "e \nIl vous reste " + this.argent + "e")
+            this.argent = this.argent.toFixed(2) - a.prix //fixed utilisé pour garder 2 decimales
+            console.log("prix de l'article " + a.nom + ": " + a.prix + "e \nIl vous reste " + this.argent.toFixed(2) + "e")
         });
     }
     couper(ingredient, outil) {
@@ -52,9 +52,9 @@ export class Produit {
 }
 
 export class Epicerie extends Lieu {
-    constructor(nom, personnes, panier, ingredients) {
+    constructor(nom, personnes, paniers, ingredients) {
         super(nom, personnes);
-        this.panier = panier;
+        this.paniers = paniers;
         this.ingredients = ingredients;
     }
 }
@@ -65,9 +65,20 @@ export class Poele extends Outil {
         this.contenu = contenu
     }
     cuire() {
-        setTimeout(() => {}, 4000)
-        this.contenu.etat = "cuit"
-        console.log(`L'${this.contenu[0].nom} est cuite :)`);
+        let time = 0
+        for (let index = 4; index >= 0; index--) {
+            time = time + 1000
+            if (index > 0) {
+                setTimeout(() => {
+                    console.log(index);
+                }, time)
+            } else {
+                setTimeout(() => {
+                    this.contenu.etat = "cuit" 
+                    console.log(`L'${this.contenu[0].nom} est cuite :)`);
+                }, time) 
+            } 
+        }
     }
 }
 

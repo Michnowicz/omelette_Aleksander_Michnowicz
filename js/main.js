@@ -3,6 +3,8 @@ import { Personnage, Lieu, Outil, Produit, Epicerie, Poele} from "./_class.js";
 
 
 
+
+
 //valeurs de base de personnage
 let personnage = new Personnage("Gary", "", 20.00, [], [])
 
@@ -23,7 +25,7 @@ let sel = new Produit("sel", "moulu", 0.15)
 //creation de l'objet panier
 let panier = []
 //valeurs de base pour l'epicerie
-let epicerie = new Epicerie("epicerie", [], panier, [oeuf, fromage, oignon, poivre, sel])
+let epicerie = new Epicerie("epicerie", [], [panier, panier, panier], [oeuf, fromage, oignon, poivre, sel])
 
 //creation de l'objet bol
 let bol = {
@@ -39,6 +41,10 @@ let bol = {
 let poele = new Poele("poele", [])
 
 
+
+
+
+
 // debut omelette
 personnage.seDeplacer(maison)
 
@@ -47,8 +53,9 @@ personnage.seDeplacer(maison)
 //epicerie
 personnage.seDeplacer(epicerie)
 
-personnage.mainDroite.push(epicerie.panier)
-console.log(personnage.nom + " apris un panier")
+personnage.mainDroite.push(epicerie.paniers[0])
+epicerie.paniers.pop()
+console.log(personnage.nom + " a pris un panier")
 
 
 
@@ -64,7 +71,6 @@ personnage.payerArticle(personnage.mainDroite[0])
 
 //retour a la maison
 personnage.seDeplacer(maison)
-
 //deplacement de chaque ingredient dans le bol
 for (let i = 0; i = personnage.mainDroite[0].length; i++) {
     bol.contenu.push(personnage.mainDroite[0][0])
@@ -78,6 +84,7 @@ for (let i = 0; i = personnage.mainDroite[0].length; i++) {
 personnage.seDeplacer(epicerie)
 
 // enleve le panier de la main droite
+epicerie.paniers.push(personnage.mainDroite[0])
 personnage.mainDroite.shift()
 console.log(personnage.nom + " remet le panier dans le magasin.")
 
