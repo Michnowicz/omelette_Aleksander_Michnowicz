@@ -9,6 +9,7 @@ export class Personnage {
     seDeplacer(lieu) {
         console.log(this.nom + " est actuellement à la " + lieu.nom)
         this.lieu = lieu.nom
+        lieu.personnes.push(this)
     }
     payerArticle(articles) {
         let total = 0

@@ -2,7 +2,10 @@
 import { Personnage, Lieu, Outil, Produit, Epicerie, Poele} from "./_class.js";
 
 
-
+//enlève la personne du lieu de départ quand elle se deplace vers un autre lieu
+function deplace(lieuDepart) {
+    lieuDepart.personnes.pop()
+}
 
 
 //valeurs de base de personnage
@@ -44,7 +47,6 @@ let poele = new Poele("poele", [])
 
 
 
-
 // debut omelette
 personnage.seDeplacer(maison)
 
@@ -52,6 +54,7 @@ personnage.seDeplacer(maison)
 
 //epicerie
 personnage.seDeplacer(epicerie)
+deplace(maison)
 
 personnage.mainDroite.push(epicerie.paniers[0])
 epicerie.paniers.pop()
@@ -71,6 +74,8 @@ personnage.payerArticle(personnage.mainDroite[0])
 
 //retour a la maison
 personnage.seDeplacer(maison)
+deplace(epicerie)
+
 //deplacement de chaque ingredient dans le bol
 for (let i = 0; i = personnage.mainDroite[0].length; i++) {
     bol.contenu.push(personnage.mainDroite[0][0])
@@ -82,6 +87,7 @@ for (let i = 0; i = personnage.mainDroite[0].length; i++) {
 
 //retour a l'epicerie
 personnage.seDeplacer(epicerie)
+deplace(maison)
 
 // enleve le panier de la main droite
 epicerie.paniers.push(personnage.mainDroite[0])
@@ -92,6 +98,7 @@ console.log(personnage.nom + " remet le panier dans le magasin.")
 
 //retour a la maison
 personnage.seDeplacer(maison)
+deplace(epicerie)
 
 //couper les ingrédients
 bol.contenu.forEach(e => {
